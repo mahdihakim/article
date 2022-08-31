@@ -92,12 +92,26 @@ public class Stock {
     }
     void afficher()
     {
-        System.out.println("designation reference prixHT tauxTVA PrixTTC");
-        for(int i = 0 ; i<articles.size();i++)
-        {
-            articles.get(i).afficher();
-
-        }
+        try{      
+ String sql = "SELECT * FROM article";
+Statement statement = con.createStatement();
+ResultSet result = statement.executeQuery(sql);
+ 
+int count = 0;
+ 
+while (result.next()){
+    String reference = result.getString(1);
+    String designation = result.getString("designation");
+    int prixHT = result.getInt("prixHT");
+    int tauxTVA = result.getInt("tauxTVA");
+ 
+    String output = "User #%d: %s - %s - %d - %d";
+    System.out.println(String.format(output, ++count, reference, designation, prixHT, tauxTVA));
+}
+}  catch (Exception e) {
+    System.out.println("Erreur "+e);
+    // gestion des exceptions
+}
         
     }
     int menu(){
