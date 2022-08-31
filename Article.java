@@ -2,8 +2,8 @@ import java.util.Scanner;
 
 public class Article {
     //declaration des attributs
-    int prixHT ;
     String reference;
+    int prixHT ;
     String designation;
     static int tauxTVA = 19;
     Scanner myobj = new Scanner(System.in);
@@ -19,6 +19,7 @@ public class Article {
 
         System.out.println("entrez le prixHT:");
         prixHT = myobj.nextInt();
+
     }
     Article(String d , int p , String r){
         prixHT = p;
